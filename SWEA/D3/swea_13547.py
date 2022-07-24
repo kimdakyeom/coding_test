@@ -1,5 +1,5 @@
-import sys
-sys.stdin = open("swea_13547_input.txt", "r")
+# import sys
+# sys.stdin = open("swea_13547_input.txt", "r")
 
 T = int(input())
 
