@@ -1,5 +1,5 @@
-import sys
-sys.stdin = open("swea_11736_input.txt", "r")
+# import sys
+# sys.stdin = open("swea_11736_input.txt", "r")
 
 T = int(input())
 
@@ -8,15 +8,10 @@ for t in range(1, T+1):
     num = list(map(int, input().split()))
     cnt = 0
     
-    tmp = []
-    tmp_ = []
-
-    for i in range(len(num)-2):
-        for j in range(i, i+3):
-            tmp.append(num[j])
-    
-    for i in range(len(tmp)//3):
-        tmp_ = tmp[i:i+3]
-        if tmp_[1] != max(tmp_) or tmp_[1] != min(tmp_):
+    for i in range(1, n-1):
+        # 두번째 숫자가 첫번째 숫자와 세번째 숫자 사이에 있다면
+        if num[i-1] < num[i] < num[i+1] or num[i-1] > num[i] > num[i+1]:
+            # 1씩 더하기
             cnt += 1
-    print(f'#{t} {cnt-1}')
+
+    print(f'#{t} {cnt}')
