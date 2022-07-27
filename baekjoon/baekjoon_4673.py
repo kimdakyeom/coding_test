@@ -1,13 +1,15 @@
 numbers = list(range(1, 10000))
-list = []
+list_ = []
+
 for i in numbers:
-    for j in str(i) :
+    for j in str(i):
         i += int(j)
+
     if i < 10000:
-        list.append(i)
-for i in set(list): # 중복된 숫자 정리
+        list_.append(i)
+
+for i in set(list_):
     numbers.remove(i)
+
 for i in numbers:
     print(i)
-
-# 어려움..
