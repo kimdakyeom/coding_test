@@ -9,7 +9,7 @@ def solve(y, x, wh):
     while True:
         if wh == 'w':
             for i in range(length):
-                result += arr[y][x + i]
+                result += board[y][x + i]
                 print(result)
             for j in range(length // 2):
                 if result[j] == result[-1 - j]:
@@ -17,7 +17,7 @@ def solve(y, x, wh):
                     break
         else:
             for i in range(length):
-                result += arr[y + i][x]
+                result += board[y + i][x]
             for j in range(length // 2):
                 if result[j] == result[-1 - j]:
                     answer = len(result)
@@ -27,8 +27,17 @@ def solve(y, x, wh):
 
 
 for t in range(1, 11):
-    n = int(input())
-    arr = [input() for _ in range(8)]
+    # n = int(input())
+    # arr = [input() for _ in range(8)]
+
+    board = [['C', 'B', 'C', 'A', 'B', 'B', 'A', 'C'],
+            ['B', 'B', 'A', 'B', 'C', 'A', 'B', 'A'],
+            ['A', 'B', 'C', 'B', 'C', 'C', 'C', 'A'],
+            ['B', 'A', 'C', 'C', 'A', 'A', 'B', 'B'],
+            ['B', 'C', 'B', 'C', 'A', 'C', 'B', 'C'],
+            ['C', 'A', 'B', 'A', 'C', 'A', 'C', 'B'],
+            ['C', 'A', 'A', 'A', 'C', 'C', 'A', 'B'],
+            ['C', 'B', 'A', 'B', 'A', 'C', 'A', 'C']]
 
     for i in range(0, 8):
         for j in range(9 - n):

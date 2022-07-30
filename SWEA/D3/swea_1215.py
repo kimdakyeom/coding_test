@@ -1,5 +1,5 @@
-# import sys
-# sys.stdin = open("swea_1215_input.txt", 'rt', encoding='UTF8')
+import sys
+sys.stdin = open("swea_1215_input.txt", 'rt', encoding='UTF8')
 
 def solve(y, x, length, wh):
     global answer
