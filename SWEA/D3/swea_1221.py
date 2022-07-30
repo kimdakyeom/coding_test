@@ -33,4 +33,4 @@ for t in range(1, T+1):
     print(f'#{t}')
     for i in list_:
         print(new_list.get(i), end=' ')
-    print(///)
+    print()
