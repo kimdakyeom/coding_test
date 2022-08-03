@@ -1,12 +1,15 @@
 x = int(input())
-cnt = 1
 
-for i in range(1, x):
-    for j in range(1, i+1):
-        for k in range(x, 1):
-            for l in range(k+1, 1):
-                cnt += 1
-                print(f'{j}/{i}')
-        #if cnt == x:
-        #    print(f'{i}/{j}')
-        #    break
+line = 1
+
+while x > line:
+    x -= line
+    line += 1
+
+if line % 2 == 0:
+    top = x
+    bottom = line - x + 1
+else:
+    top = line - x + 1
+    bottom = x
+print(f'{top}/{bottom}')
