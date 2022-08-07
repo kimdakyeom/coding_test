@@ -1,3 +1,6 @@
+# import sys
+# sys.stdin = open("swea_1491_input.txt", 'rt', encoding='UTF8')
+
 T = int(input())
 
 for t in range(1, T+1):
