@@ -2,8 +2,15 @@
 #import math
 
 def solution(arr, K):
-    #여기에 코드를 작성해주세요.
     answer = 0
+
+    for i in range(len(arr)):
+        for j in range(i + 1, len(arr)):
+            for k in range(j + 1, len(arr)):
+                sum_ = 0
+                sum_ += arr[i] + arr[j] + arr[k]
+                if sum_ % K == 0:
+                    answer += 1
     return answer
 
 #아래는 테스트케이스 출력을 해보기 위한 코드입니다.

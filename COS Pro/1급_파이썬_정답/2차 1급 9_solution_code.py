@@ -8,3 +8,15 @@ def solution(password):
     return True
 
 '''테케 만들때 맨 처음 3개만 증가인경우 마지막 3개만 증가인경우 감소인경우 숫자 알파벳등등으로 추가할것'''
+#아래는 테스트케이스 출력을 해보기 위한 코드입니다. 아래 코드는 잘못된 부분이 없으니, solution함수만 수정하세요.
+password1 = "cospro890"
+ret1 = solution(password1)
+
+#[실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
+print("solution 함수의 반환 값은", ret1, "입니다.")
+
+password2 = "cba323"
+ret2 = solution(password2)
+
+#[실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
+print("solution 함수의 반환 값은", ret2, "입니다.")

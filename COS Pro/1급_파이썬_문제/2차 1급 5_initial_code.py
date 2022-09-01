@@ -2,8 +2,11 @@
 #import math
 
 def solution(arr):
-    #여기에 코드를 작성해주세요.
-    answer = 0
+    dp = [1 for _ in range(len(arr))]
+    for i in range(1, len(arr)):
+        if arr[i] > arr[i-1]:
+            dp[i] = dp[i-1] + 1
+    answer = max(dp)
     return answer
 
 #아래는 테스트케이스 출력을 해보기 위한 코드입니다.

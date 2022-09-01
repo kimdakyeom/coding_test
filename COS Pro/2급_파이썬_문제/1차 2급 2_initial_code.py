@@ -1,10 +1,15 @@
 #You may use import as below.
-#import math
+import math
 
 def solution(price, grade):
-    #Write code here.
     answer = 0
-    return answer
+    if grade == "S":
+        answer = price - price * 0.05
+    elif grade == "G":
+        answer = price - price * 0.1
+    elif grade == "V":
+        answer = price - price * 0.15
+    return math.trunc(answer)
 
 #The following is code to output testcase.
 price1 = 2500
