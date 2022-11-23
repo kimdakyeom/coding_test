@@ -1,28 +1,26 @@
+def grade(num):
+    if num == 6:
+        return 1
+    elif num == 5:
+        return 2
+    elif num == 4:
+        return 3
+    elif num == 3:
+        return 4
+    elif num == 2:
+        return 5
+    elif num == 1:
+        return 6
+    elif num == 0:
+        return 6
+
 def solution(lottos, win_nums):
     answer = []
-    cnt = 0
-
-    for i in range(len(lottos)):
-        if lottos[i] in win_nums:
-            cnt += 1
-    answer.append(cnt)
-
-    for i in range(len(lottos)):
-        if lottos[i] == 0:
-            cnt += 1
-    answer.append(cnt)
-
-    for i in range(len(answer)):
-        if answer[i] == 2:
-            answer[i] = 5
-        elif answer[i] == 3:
-            answer[i] = 4
-        elif answer[i] == 4:
-            answer[i] = 3
-        elif answer[i] == 5:
-            answer[i] = 2
-        elif answer[i] == 6:
-            answer[i] = 1
-        else:
-            answer[i] = 6
-    return sorted(answer)
+    ok = 0
+    for lotto in lottos:
+        if lotto in win_nums:
+            ok = ok + 1
+    first = ok + lottos.count(0)
+    answer.append(grade(first))
+    answer.append(grade(ok))
+    return answer
