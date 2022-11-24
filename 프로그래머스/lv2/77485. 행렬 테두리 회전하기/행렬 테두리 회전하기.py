@@ -1,40 +1,31 @@
-def rotate(queries, arr):
-    x1, y1, x2, y2 = queries
-    mins = []
-    x1 -= 1
-    y1 -= 1
-    x2 -= 1
-    y2 -= 1
-
-    for i in range(y2 - 1, y1 - 1, -1):
-        arr[x1][i], arr[x1][i + 1] = arr[x1][i + 1], arr[x1][i]
-        mins.append(arr[x1][i])
-        mins.append(arr[x1][i + 1])
-    for i in range(x1, x2):
-        arr[i][y1], arr[i + 1][y1] = arr[i + 1][y1], arr[i][y1]
-        mins.append(arr[i][y1])
-        mins.append(arr[i + 1][y1])
-    for i in range(y1, y2):
-        arr[x2][i], arr[x2][i + 1] = arr[x2][i + 1], arr[x2][i]
-        mins.append(arr[x2][i])
-        mins.append(arr[x2][i + 1])
-    for i in range(x2 -1, x1, -1):
-        arr[i][y2], arr[i + 1][y2] = arr[i + 1][y2], arr[i][y2]
-        mins.append(arr[i][y2])
-        mins.append(arr[i + 1][y2])
-    mins = set(mins)
-    return (arr, min(mins))
-
 def solution(rows, columns, queries):
     answer = []
+    arr = [[0 for col in range(columns+1)] for row in range(rows+1)]
+    num = 1
+    for row in range(1, rows+1):
+        for col in range(1, columns+1):
+            arr[row][col] = num
+            num += 1
+    for x1, y1, x2, y2 in queries:
+        tmp = arr[x1][y1]
+        mini = tmp
 
-    arr = [[0] * columns for _ in range(rows)]
-
-    for i in range(rows):
-        for j in range(columns):
-            arr[i][j] = (i * columns + j + 1)
-    
-    for q in queries:
-        arr, min_ = rotate(q, arr)
-        answer.append(min_)
+        for k in range(x1, x2):
+            test = arr[k+1][y1]
+            arr[k][y1] = test
+            mini = min(mini, test)
+        for k in range(y1, y2):
+            test = arr[x2][k+1]
+            arr[x2][k] = test
+            mini = min(mini, test)
+        for k in range(x2, x1, -1):
+            test = arr[k-1][y2]
+            arr[k][y2] = test
+            mini = min(mini, test)
+        for k in range(y2, y1, -1):
+            test = arr[x1][k-1]
+            arr[x1][k] = test
+            mini = min(mini, test)
+        arr[x1][y1+1] = tmp
+        answer.append(mini)
     return answer
