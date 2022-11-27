@@ -1,4 +1,5 @@
-board = input()
+from sys import stdin
+board = stdin.readline().replace('\n','')
 i = 0
 answer = ''
 
