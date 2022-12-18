@@ -1,46 +1,34 @@
 n = int(input())
 arr = []
-
 for i in range(n):
-    tmp = []
-    for j in list(map(str, input().strip())):
-        tmp.append(int(j))
-    arr.append(tmp)
+    arr.append(list(map(int, input())))
 
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
+answer_list = []
 
-def dfs(arr, i, j):
-    stack = [[i, j]]
-    dx = [-1, 1, 0, 0]
-    dy = [0, 0, 1, -1]
-    result[cnt] = [[i, j]]
-
-    while stack: 
-        a, b = stack.pop()
-        arr[a][b] = 0
-
+def dfs(x, y):
+    if 0 <= x <= n-1 and 0 <= y <= n-1 and arr[x][y] == 1:
+        global count
+        count += 1
+        arr[x][y] = 0
         for i in range(4):
-            x = a + dx[i]
-            y = b + dy[i]
-            if 0 <= x < n and 0 <= y < n and arr[x][y] == 1:
-                result[cnt].append([x, y])
-                arr[x][y] = 0
-                stack.append([x, y])
-
-cnt = 0
-result = {}
+            nx = x + dx[i]
+            ny = y + dy[i]
+            dfs(nx, ny)
+        return True
+count = 0
+answer = 0
 
 for i in range(n):
     for j in range(n):
-        if arr[i][j] == 1:
-            cnt += 1
-            dfs(arr, i, j)
-            
-print(len(result))
+        if dfs(i, j) == True:
+            answer_list.append(count)
+            answer += 1
+            count = 0
 
-total = []
+answer_list.sort()
+print(answer)
 
-for i in result:
-    total.append(len(result[i]))
-total.sort()
-for i in total:
-    print(i)
+for i in range(len(answer_list)):
+    print(answer_list[i])
