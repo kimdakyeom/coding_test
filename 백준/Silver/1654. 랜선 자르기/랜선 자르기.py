@@ -1,15 +1,20 @@
 import sys
 
+input = sys.stdin.readline
 k, n = map(int, input().split())
-lan = [int(sys.stdin.readline()) for _ in range(k)]
-start, end = 1, max(lan)
+lan = []
+
+for _ in range(k):
+    lan.append(int(input()))
+start = 1
+end = max(lan)
 
 while start <= end:
     mid = (start + end) // 2
-    lines = 0
+    answer = 0
     for i in lan:
-        lines += i // mid
-    if lines >= n:
+        answer += i // mid
+    if answer >= n:
         start = mid + 1
     else:
         end = mid - 1
