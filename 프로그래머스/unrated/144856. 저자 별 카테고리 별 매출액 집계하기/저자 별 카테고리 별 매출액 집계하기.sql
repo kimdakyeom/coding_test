@@ -1,13 +1,13 @@
-SELECT
-    B.AUTHOR_ID,
-    A.AUTHOR_NAME,
-    B.CATEGORY,
-    (SUM(S.SALES*B.PRICE)) AS TOTAL_SALES
-FROM BOOK AS B
-LEFT JOIN BOOK_SALES AS S
-ON B.BOOK_ID=S.BOOK_ID
-LEFT JOIN AUTHOR AS A
-ON B.AUTHOR_ID=A.AUTHOR_ID
-WHERE S.SALES_DATE LIKE '2022-01%'
-GROUP BY B.AUTHOR_ID, B.CATEGORY
-ORDER BY B.AUTHOR_ID, B.CATEGORY DESC
+select 
+    b.author_id, 
+    a.author_name, 
+    b.category, 
+    (sum(b.price * s.sales)) as total_sales
+from book as b
+left join book_sales as s
+on b.book_id=s.book_id
+left join author as a
+on b.author_id=a.author_id
+where year(s.sales_date)=2022 and month(s.sales_date)=1
+group by b.author_id, b.category
+order by b.author_id, b.category desc
